@@ -16,9 +16,14 @@ generateSierpinski <- function(rows) {
 # Sample a Vertex of the n-Gon with base (0, 0) -> (1, 0)
 # n: number of vertices (e.g. n=3: Triangle)
 # Return a vector of length 2 with x and y coordinates
-sampleVertex <- function(n) {
-  c(x=1, y=1)
-}
+
+  midpoint = c(x=0.5, y=0.5 / tan(pi / n))
+  radius = 0.5 / sin(pi / n)
+  angle = 2 * pi / n * (sample(n, 1))
+
+  midpoint + radius * c(sin(angle), cos(angle))
+
+
 
 # Create a point that is a step from `from` to `to`
 # step.size is a number between 0 and 1, indicating
